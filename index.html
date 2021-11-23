@@ -16,89 +16,92 @@
         </header>
         
         <main class="container">
-            <div class="col-12 col-md-4">
-                <!-- City Search Form -->
-                <div class="card">
-                    <h3 class="card-header text-uppercase">Search for a city:</h3>
-                    <form id="user-form" class="card-body">
-                        <input name="city" id="city" type="text" placeholder="City Name" class="form-input" />
-                        <button type="submit" class="btn" id="run-search">Submit</button>
-                    </form>
-                </div>
-                
-                <!-- City Search History -->
-                <div class="card">
-                    <h3 class="card-header text-uppercase">Search History:</h3>
-                    <div class="card-body" id="search-history">
-                         <ul class="list-group">
-                            <button id="search0"></button>
-                            <button id="search1"></button>
-                            <button id="search2"></button>
-                            <button id="search3"></button>
-                            <button id="search4"></button>
-                            <button id="search5"></button>
-                            <button id="search6"></button>
-                            <button id="search7"></button>
-                            <button id="search8"></button>
-                            <button id="search9"></button>
-                         </ul>
-                     </div>
-                </div>
-            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- City Search Form -->
+                    <div class="card">
+                        <h3 class="card-header">Search for a City</h3>
+                        <form id="user-form" class="card-body">
+                            <input name="city" id="city" type="text" placeholder="City Name" class="form-input" />
+                            <button type="submit" class="btn" id="run-search">Submit</button>
+                        </form>
+                    </div>
                     
-            <div class="col-12 col-md-8">
-                <!-- Current Weather for City -->
-                <div class="card" id="current-weather">
-                    <div class="card-header" id="city-info">
-                        <h2 id="city-name">City: </h2>
-                        <p id="current-date"></p>
-                        <h4 class="card-subtitle">Temperature: <span id="citytemp"></span></h4>
-                        <br>
-                        <h4 class="card-subtitle">Wind: <span id="citywind"></span></h4>
-                        <br>
-                        <h4 class="card-subtitle"> Humidity: <span id="cityhumidity"></span></h4>
-                        <br>
-                        <h4 class="card-subtitle">UV Index: <span id="cityuv"></span></h4>
+                    <!-- City Search History -->
+                    <div class="card">
+                        <h3 class="card-header">Search History</h3>
+                        <div class="card-body" id="search-history">
+                            <ul class="list-group">
+                                <button id="search0"></button>
+                                <button id="search1"></button>
+                                <button id="search2"></button>
+                                <button id="search3"></button>
+                                <button id="search4"></button>
+                                <button id="search5"></button>
+                                <button id="search6"></button>
+                                <button id="search7"></button>
+                                <button id="search8"></button>
+                                <button id="search9"></button>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <!-- 5 Day Forecast -->
-                <div class="col-12 forecast-container">
-                    <h3 class="five-day">5-Day Forecast:</h3>
-                    <div class="card-deck text-center">
-                        <div class="card">
-                            <p id="day0">Date: </p>
-                            <img class="icons" id="icon0">
-                            <p id="high0">High: </p>
-                            <p id="low0">Low: </p>
-                            <p id="humidity0">Humidity: </p>
+                        
+                <div class="col-md-8">
+                    <!-- Current Weather for City -->
+                    <div class="card" id="current-weather">
+                       <h3 class="card-header">Current Weather</h3>
+                       <div class="card-body" id="city-info">
+                            <h2 id="city-name"></h2>
+                            <p id="current-date"></p>
+                            <h4 class="card-subtitle">Temperature: <span id="citytemp"></span></h4>
+                            <br>
+                            <h4 class="card-subtitle">Wind: <span id="citywind"></span></h4>
+                            <br>
+                            <h4 class="card-subtitle"> Humidity: <span id="cityhumidity"></span></h4>
+                            <br>
+                            <h4 class="card-subtitle">UV Index: <span id="cityuv"></span></h4>
                         </div>
-                        <div class="card">
-                            <p id="day1">Date: </p>
-                            <img class="icons" id="icon1">
-                            <p id="high1">High: </p>
-                            <p id="low1">Low: </p>
-                            <p id="humidity1">Humidity: </p>
-                        </div>
-                        <div class="card">
-                            <p id="day2">Date: </p>
-                            <img class="icons" id="icon2">
-                            <p id="high2">High: </p>
-                            <p id="low2">Low: </p>
-                            <p id="humidity2">Humidity: </p>
-                        </div>
-                        <div class="card">
-                            <p id="day3">Date: </p>
-                            <img class="icons" id="icon3">
-                            <p id="high3">High: </p>
-                            <p id="low3">Low: </p>
-                            <p id="humidity3">Humidity: </p>
-                        </div>
-                        <div class="card">
-                            <p id="day4">Date: </p>
-                            <img class="icons" id="icon4">
-                            <p id="high4">High: </p>
-                            <p id="low4">Low: </p>
-                            <p id="humidity4">Humidity: </p>
+                    </div>
+                    <!-- 5 Day Forecast -->
+                    <div class="card" id="five-day">
+                        <h3 class="card-header">5-Day Forecast: </h3>
+                        <div class="card-deck text-left">
+                            <div class="card">
+                                <p id="day0">Date: </p>
+                                <img class="icons" id="icon0">
+                                <p id="high0">High: </p>
+                                <p id="low0">Low: </p>
+                                <p id="humidity0">Humidity: </p>
+                            </div>
+                            <div class="card">
+                                <p id="day1">Date: </p>
+                                <img class="icons" id="icon1">
+                                <p id="high1">High: </p>
+                                <p id="low1">Low: </p>
+                                <p id="humidity1">Humidity: </p>
+                            </div>
+                            <div class="card">
+                                <p id="day2">Date: </p>
+                                <img class="icons" id="icon2">
+                                <p id="high2">High: </p>
+                                <p id="low2">Low: </p>
+                                <p id="humidity2">Humidity: </p>
+                            </div>
+                            <div class="card">
+                                <p id="day3">Date: </p>
+                                <img class="icons" id="icon3">
+                                <p id="high3">High: </p>
+                                <p id="low3">Low: </p>
+                                <p id="humidity3">Humidity: </p>
+                            </div>
+                            <div class="card">
+                                <p id="day4">Date: </p>
+                                <img class="icons" id="icon4">
+                                <p id="high4">High: </p>
+                                <p id="low4">Low: </p>
+                                <p id="humidity4">Humidity: </p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ body {
 }
 
 .btn:hover {
-    transform:scale(110%);
+    transform:scale(105%);
 }
 
 .card {
@@ -52,4 +52,13 @@ body {
 .card-deck div {
     text-align: left;
     height: 150px;
+}
+
+#searchHistory button {
+    align-items: center;
+    background-color:lightgrey;
+}
+
+#searchHistory button:hover{
+    transform: scale(105%);
 }

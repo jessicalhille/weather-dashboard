@@ -2,8 +2,6 @@ apiKey = "6e420bce715508b6be7bea964633132d";
 var searchHistory = [];
 var today = moment().format("L");
 
-var fiveDayEl = document.querySelector("#five-day");
-
 function currentCondition(city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
 
@@ -104,4 +102,30 @@ $("#searchBtn").on("click", function(event) {
 
     var city = $("#enterCity").val().trim();
     currentCondition(city);
+
+    if(!searchHistory.includes(city)) {
+        searchHistory.push(city);
+        var searchedCity = $(`
+            <button class="list-group">${city}</button>
+        `);
+        $("#searchHistory").append(searchedCity);
+    };
+
+    localStorage.setItem("city", JSON.stringify(searchHistory));
+    console.log(searchHistory);
+})
+
+$(document).on("click", ".list-group", function() {
+    var cityList = $(this).text();
+    currentCondition(cityList);
+})
+
+$(document).ready(function() {
+    var searchHistoryArr = JSON.parse(localStorage.getItem("city"));
+
+    if (searchHistoryArr !== null) {
+        var lastSearchedIndex = searchHistoryArr.length - 1;
+        var lastSearchedCity = searchHistoryArr[lastSearchedIndex];
+        currentCondition(lastSearchedCity);
+    };
 })

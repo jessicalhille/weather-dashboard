@@ -1,12 +1,16 @@
 * {
-    margin: 5px;
+    margin: 0;
     padding: 0;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
     background-color:whitesmoke;
-    padding: 5px;
+}
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .hero {
@@ -17,7 +21,6 @@ body {
     padding: 10px;
     border: solid;
     border-color:darkslateblue;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .btn {
@@ -26,18 +29,12 @@ body {
     text-align: center;
     border: solid;
     border-color:midnightblue;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .btn:hover {
     transform:scale(105%);
-}
-
-.card {
-    margin-bottom: 10px;
-    background-color:whitesmoke;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .form-input {
@@ -45,13 +42,9 @@ body {
     margin-bottom: 20px;
 }
 
-.list-group button {
-    height: 30px;
-}
-
-.card-deck div {
-    text-align: left;
-    height: 150px;
+#searchHistory {
+    border-top: solid 1px black;
+    padding-top: 30px;
 }
 
 #searchHistory button {
@@ -61,4 +54,15 @@ body {
 
 #searchHistory button:hover{
     transform: scale(105%);
+}
+
+#city-info {
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 20px;
+}
+
+#five-day {
+    font-size: smaller;
 }

@@ -12,98 +12,50 @@
 
     <body>
         <header class="hero">
-            <h1 class="app-title">Weather Dashboard</h1>
+            <div class="col-12 text-center">
+                <h1>Weather Dashboard</h1>
+            </div>
         </header>
         
-        <main class="weather">
+        <main class="container-fluid">
             <div class="row">
-                <div class="col-3">
-                    <!-- City Search Form -->
-                    <div class="card">
-                        <h3 class="card-header">Search for a City</h3>
-                        <form id="user-form" class="card-body">
-                            <input name="city" id="city" type="text" placeholder="City Name" class="form-input" />
-                            <button type="submit" class="btn" id="run-search">Submit</button>
+                <div class="col-3" id="searchResults">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>Search for a City: </h4>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-12">
+                        <form id="user-form" class="input-group">
+                            <input name="city" id="enterCity" type="text" placeholder="City Name" class="form-input" />
+                            <button type="button" class="btn" id="searchBtn">Search</button>
                         </form>
                     </div>
+                </div>
                     
                     <!-- City Search History -->
-                    <div class="card">
-                        <h3 class="card-header">Search History</h3>
-                        <div class="card-body" id="search-history">
-                            <ul class="list-group">
-                                <button id="search0"></button>
-                                <button id="search1"></button>
-                                <button id="search2"></button>
-                                <button id="search3"></button>
-                                <button id="search4"></button>
-                                <button id="search5"></button>
-                                <button id="search6"></button>
-                                <button id="search7"></button>
-                                <button id="search8"></button>
-                                <button id="search9"></button>
-                            </ul>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <ul class="list-group" id="searchHistory"></ul>
                         </div>
                     </div>
                 </div>
                         
-                <div class="col-8">
+                <div class="col-8" id="current-weather">
                     <!-- Current Weather for City -->
-                    <div class="card" id="current-weather">
-                       <h3 class="card-header">Current Weather</h3>
-                       <div class="card-body" id="city-info">
-                            <h2 id="city-name"></h2>
-                            <p id="current-date"></p>
-                            <h4 class="card-subtitle">Temperature: <span id="citytemp"></span></h4>
-                            <br>
-                            <h4 class="card-subtitle">Wind: <span id="citywind"></span></h4>
-                            <br>
-                            <h4 class="card-subtitle"> Humidity: <span id="cityhumidity"></span></h4>
-                            <br>
-                            <h4 class="card-subtitle">UV Index: <span id="cityuv"></span></h4>
-                        </div>
+                    <div class="row">
+                       <div class="col-12" id="city-info"></div>
                     </div>
+
                     <!-- 5 Day Forecast -->
-                    <div id="five-day">
-                        <h3 class="card-header">5-Day Forecast</h3>
-                        <div class="card-deck">
-                            <div class="card">
-                                <p id="day0"></p>
-                                <img class="icons" id="icon0">
-                                <p id="high0">High: </p>
-                                <p id="low0">Low: </p>
-                                <p id="humidity0">Humidity: </p>
-                            </div>
-                            <div class="card">
-                                <p id="day1"></p>
-                                <img class="icons" id="icon1">
-                                <p id="high1">High: </p>
-                                <p id="low1">Low: </p>
-                                <p id="humidity1">Humidity: </p>
-                            </div>
-                            <div class="card">
-                                <p id="day2"></p>
-                                <img class="icons" id="icon2">
-                                <p id="high2">High: </p>
-                                <p id="low2">Low: </p>
-                                <p id="humidity2">Humidity: </p>
-                            </div>
-                            <div class="card">
-                                <p id="day3"></p>
-                                <img class="icons" id="icon3">
-                                <p id="high3">High: </p>
-                                <p id="low3">Low: </p>
-                                <p id="humidity3">Humidity: </p>
-                            </div>
-                            <div class="card">
-                                <p id="day4"></p>
-                                <img class="icons" id="icon4">
-                                <p id="high4">High: </p>
-                                <p id="low4">Low: </p>
-                                <p id="humidity4">Humidity: </p>
-                            </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>5 Day Forecast:</h3>
                         </div>
                     </div>
+
+                    <div id="five-day" class="row"></div>
                 </div>
             </div>
         </main>

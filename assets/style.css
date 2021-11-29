@@ -9,7 +9,7 @@ body {
     padding: 5px;
 }
 
-.hero, .card-header {
+.hero {
     background-color:navy;
     color: whitesmoke;
     text-align: center;

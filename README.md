@@ -23,7 +23,7 @@ The challenge was to build a weather dashboard that will run in the browser usin
 
 ***
 
-
+<img width="1508" alt="Screen Shot 2021-11-28 at 10 23 53 PM" src="https://user-images.githubusercontent.com/91511805/143808726-6bb1abb7-a95a-4eb8-8f6a-65f48d9c1b7c.png">
 
 ***
 

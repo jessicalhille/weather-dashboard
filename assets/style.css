@@ -27,6 +27,7 @@ body {
     border: solid;
     border-color:midnightblue;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    width: 100%;
 }
 
 .btn:hover {
@@ -52,4 +53,3 @@ body {
     text-align: left;
     height: 150px;
 }
-

@@ -2,6 +2,11 @@ apiKey = "6e420bce715508b6be7bea964633132d";
 var searchHistory = [];
 var today = moment().format("L");
 
+var cityInfoEl = document.querySelector("#city-info");
+var fiveDayEl = document.querySelector("#five-day");
+var searchHistoryEl = document.querySelector("#searchHistory");
+var searchBtn = document.querySelector("#searchBtn");
+
 // current weather for the user input city
 function currentCondition(city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
@@ -10,25 +15,34 @@ function currentCondition(city) {
         method: "GET"
     }).then(function(response) {
 
-        $("current-weather").css("display", "block");
-        $("city-info").empty();
+        cityInfoEl.textContent = "";
 
         // get the icon code and url for the weather images
         var iconCode = response.weather[0].icon;
-        var iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+        var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
 
         // pull information from the current weather array
-        var currentCity = $(`
-            <h2 id="currentCity">
-                ${response.name} (${today}) <img src="${iconUrl}" />
-            </h2>
-            <p>Temperature: ${response.main.temp} °F</p>
-            <p>Wind: ${response.wind.speed} MPH</p>
-            <p>Humidity: ${response.main.humidity}\%</p>
-        `);
+        var currentImg = document.createElement("img");
+        currentImg.setAttribute("src", iconUrl);
+
+        var currentCity = document.createElement("h2");
+        currentCity.textContent = response.name + " " + today;
+
+        var currentTemp = document.createElement("p");
+        currentTemp.textContent = "Temperature: " + response.main.temp + "°F";
+
+        var windSpeed = document.createElement("p");
+        windSpeed.textContent = "Wind Speed: " + response.wind.speed + " MPH"
+
+        var currentHum = document.createElement("p");
+        currentHum.textContent = "Humidity: " + response.main.humidity + "%";
 
         // display the current weather information in the html page
-        $("#city-info").append(currentCity);
+        cityInfoEl.appendChild(currentCity);
+        cityInfoEl.appendChild(currentImg);
+        cityInfoEl.appendChild(currentTemp);
+        cityInfoEl.appendChild(windSpeed);
+        cityInfoEl.appendChild(currentHum);
 
         // get the latitude and longitude for the uv index
         var latitude = response.coord.lat;
@@ -40,14 +54,13 @@ function currentCondition(city) {
             method: "GET"
         }).then(function(uviResponse) {
             var uvIndex = uviResponse.value;
-            var uvIndexP = $(`
-                <p>UV Index: 
-                    <span id="uvIndexColor">${uvIndex}</span>
-                </p>
-            `);
+
+            var uvIndexEl = document.createElement("p");
+            uvIndexEl.textContent = "UV Index: " + uvIndex;
+            uvIndexEl.id = "uvIndexColor";
 
             // adds uv index to the current weather element
-            $("#city-info").append(uvIndexP);
+            cityInfoEl.appendChild(uvIndexEl);
 
             // pushes latitute and longitude for the 5 day forecast
             fiveDays(latitude, longitude);
@@ -59,10 +72,10 @@ function currentCondition(city) {
                 $("#uvIndexColor").css("background-color", "#FFFF00");
             } else if (uvIndex > 7) {
                 $("uvIndexColor").css("background-color", "FF6347");
-            }
-        })
+            };
+        });
 
-    })
+    });
 }
 
 function fiveDays(latitude, longitude) {
@@ -73,7 +86,7 @@ function fiveDays(latitude, longitude) {
         method: "GET"
     }).then(function(fiveDayResponse) {
 
-        $("#five-day").empty();
+        fiveDayEl.textContent = "";
 
         // pulls the next 5 days from the current city's array
         for (i = 1; i < 6; i++) {
@@ -88,56 +101,61 @@ function fiveDays(latitude, longitude) {
             var currentDate = moment.unix(cityInfo.date).format("MM/DD/YYYY");
 
             // get the icon image for each day
-            var iconUrl = `<img src="https://openweathermap.org/img/w/${cityInfo.icon}.png"`;
+            var iconUrl = "https://openweathermap.org/img/w/" + cityInfo.icon + ".png";
 
             // create and insert the 5 day forecast information from the array
-            var fiveDayCards = $(`
-                <div class="pl-3">
-                    <div class="card bg-dark text-white">
-                        <div class="card-body">
-                            <h5>${currentDate}</h5>
-                            <img>${iconUrl}</img>
-                            <p>Temp: ${cityInfo.temp} °F</p>
-                            <p>Wind: ${cityInfo.wind} MPH</p>
-                            <p>Humidity: ${cityInfo.humidity}\%</p>
-                        </div>
-                    </div>
-                </div>
-            `);
+            var fiveDayDate = document.createElement("h5");
+            fiveDayDate.textContent = currentDate;
+
+            var fiveDayIcon = document.createElement("img");
+            fiveDayIcon.setAttribute("src", iconUrl);
+
+            var fiveDayTemp = document.createElement("p");
+            fiveDayTemp.textContent = "Temp: " + cityInfo.temp + "°F";
+
+            var fiveDayWind = document.createElement("p");
+            fiveDayWind.textContent = " Wind: " + cityInfo.wind + "MPH";
+
+            var fiveDayHum = document.createElement("p");
+            fiveDayHum.textContent = "Humidity: " + cityInfo.humidity + "%";
 
             // display the five day forecast inside the html element
-            $("#five-day").append(fiveDayCards);
+            fiveDayEl.appendChild(fiveDayDate);
+            fiveDayEl.appendChild(fiveDayIcon);
+            fiveDayEl.appendChild(fiveDayTemp);
+            fiveDayEl.appendChild(fiveDayWind);
+            fiveDayEl.appendChild(fiveDayHum);
         };
-
     });
 }
 
 // on click event listener to submit the city name input from user
-$("#searchBtn").on("click", function(event) {
+searchBtn.addEventListener("click", function(event) {
     event.preventDefault();
 
     var city = $("#enterCity").val().trim();
     currentCondition(city);
-    $("#city-info").empty();
+    cityInfoEl.textContent = "";
 
     // places user input city into the search history
     if(!searchHistory.includes(city)) {
         searchHistory.push(city);
-        var searchedCity = $(`
-            <button class="list-group">${city}</button>
-        `);
-        $("#searchHistory").append(searchedCity);
+
+        var searchedCity = document.createElement("button");
+        searchedCity.textContent = city;
+
+        searchHistoryEl.append(searchedCity);
     };
 
     // saves to local storage
     localStorage.setItem("city", JSON.stringify(searchHistory));
-})
 
-// on click event listener for the search history buttons
-$(document).on("click", ".list-group", function() {
-    var cityList = $(this).text();
-    currentCondition(cityList);
-    $("#city-info").empty();
+    // on click event listener for the search history buttons
+    searchedCity.addEventListener("click", function() {
+        var cityList = $(this).text();
+        currentCondition(cityList);
+        cityInfoEl.textContent = "";
+    });
 })
 
 // saves the most recent searched city and presents it to the user when they refresh or reload web browser

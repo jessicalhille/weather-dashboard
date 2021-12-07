@@ -24,6 +24,8 @@ function currentCondition(city) {
         // pull information from the current weather array
         var currentImg = document.createElement("img");
         currentImg.setAttribute("src", iconUrl);
+        currentImg.style.width = "80px";
+        currentImg.style.height = "80px";
 
         var currentCity = document.createElement("h2");
         currentCity.textContent = response.name + " " + today;
@@ -38,8 +40,8 @@ function currentCondition(city) {
         currentHum.textContent = "Humidity: " + response.main.humidity + "%";
 
         // display the current weather information in the html page
+        currentCity.appendChild(currentImg);
         cityInfoEl.appendChild(currentCity);
-        cityInfoEl.appendChild(currentImg);
         cityInfoEl.appendChild(currentTemp);
         cityInfoEl.appendChild(windSpeed);
         cityInfoEl.appendChild(currentHum);
@@ -109,6 +111,8 @@ function fiveDays(latitude, longitude) {
 
             var fiveDayIcon = document.createElement("img");
             fiveDayIcon.setAttribute("src", iconUrl);
+            fiveDayIcon.style.width = "60px";
+            fiveDayIcon.style.height = "60px";
 
             var fiveDayTemp = document.createElement("p");
             fiveDayTemp.textContent = "Temp: " + cityInfo.temp + "°F";
@@ -119,12 +123,21 @@ function fiveDays(latitude, longitude) {
             var fiveDayHum = document.createElement("p");
             fiveDayHum.textContent = "Humidity: " + cityInfo.humidity + "%";
 
+            var fiveDayCard = document.createElement("div");
+            fiveDayCard.classList = "card align-items-center";
+            fiveDayCard.style.width = "130px";
+            fiveDayCard.style.backgroundColor = "grey";
+            fiveDayCard.style.color = "white";
+            fiveDayCard.style.margin = "5px";
+
             // display the five day forecast inside the html element
-            fiveDayEl.appendChild(fiveDayDate);
-            fiveDayEl.appendChild(fiveDayIcon);
-            fiveDayEl.appendChild(fiveDayTemp);
-            fiveDayEl.appendChild(fiveDayWind);
-            fiveDayEl.appendChild(fiveDayHum);
+            fiveDayCard.appendChild(fiveDayDate);
+            fiveDayCard.appendChild(fiveDayIcon);
+            fiveDayCard.appendChild(fiveDayTemp);
+            fiveDayCard.appendChild(fiveDayWind);
+            fiveDayCard.appendChild(fiveDayHum);
+
+            fiveDayEl.appendChild(fiveDayCard);
         };
     });
 }
